@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portafolio Personal - Desarrollador</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --green-dark: #1b3932;
+    --green: #2e7d32;
+    --green-light: #a5d6a7;
+    --green-lighter: #e8f5e9;
+    --text-dark: #263238;
+    --text-light: #fafafa;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--green-lighter);
+    scroll-behavior: smooth;
+  }
+  header {
+    background-color: var(--green);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+  }
+  nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--green-lighter);
+    letter-spacing: 2px;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li a {
+    color: var(--green-lighter);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    color: var(--green-light);
+  }
+  nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--green-light);
+    border-radius: 4px;
+  }
+  main {
+    max-width: 1100px;
+    margin: 5.5rem auto 2rem;
+    padding: 0 1rem 4rem;
+  }
+  section {
+    margin-bottom: 4rem;
+  }
+  h2.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    border-bottom: 3px solid var(--green);
+    padding-bottom: 0.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-title i {
+    color: var(--green);
+  }
+  /* Inicio Section */
+  #inicio {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, var(--green-light), var(--green-lighter));
+    border-radius: 12px;
+  }
+  #inicio h1 {
+    font-size: 2.8rem;
+    color: var(--green-dark);
+    margin-bottom: 0.2rem;
+  }
+  #inicio p {
+    font-size: 1.2rem;
+    color: var(--green-dark);
+    max-width: 600px;
+    margin: 0.5rem auto 1.5rem;
+  }
+  #inicio img {
+    max-width: 180px;
+    border-radius: 50%;
+    border: 4px solid var(--green);
+    margin-top: 1rem;
+  }
+  /* Proyectos Section */
+  #proyectos .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.8rem;
+  }
+  .project-card {
+    background-color: var(--green-lighter);
+    box-shadow: 0 2px 8px rgb(46 125 50 / 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+  }
+  .project-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .project-content {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--green-dark);
+  }
+  .project-description {
+    font-size: 0.95rem;
+    color: #414d3f;
+    flex-grow: 1;
+  }
+  .project-links {
+    margin-top: 0.7rem;
+  }
+  .project-links a {
+    text-decoration: none;
+    color: var(--green);
+    font-weight: 600;
+    margin-right: 1.2rem;
+    transition: color 0.3s ease;
+  }
+  .project-links a:hover {
+    color: var(--green-dark);
+  }
+  /* Experiencia Académica & Personal */
+  .experience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .experience-item {
+    background-color: var(--green-lighter);
+    border-left: 6px solid var(--green);
+    margin-bottom: 1.5rem;
+    padding: 1rem 1rem 1rem 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgb(46 125 50 / 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .experience-item h3 {
+    margin: 0;
+    font-weight: 700;
+    color: var(--green-dark);
+  }
+  .experience-item span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green);
+  }
+  .experience-item p {
+    margin: 0.3rem 0 0 0;
+    font-size: 0.95rem;
+    color: #37473c;
+  }
+  /* Footer */
+  footer {
+    background-color: var(--green);
+    color: var(--green-lighter);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    nav ul {
+      gap: 1rem;
+    }
+    #inicio h1 {
+      font-size: 2.2rem;
+    }
+    #inicio p {
+      font-size: 1rem;
+      max-width: 90vw;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav aria-label="Menú principal">
+    <div class="logo" tabindex="0">Mi Portafolio</div>
+    <ul>
+      <li><a href="#inicio" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+      <li><a href="#proyectos"><i class="fas fa-code"></i> Proyectos</a></li>
+      <li><a href="#academica"><i class="fas fa-graduation-cap"></i> Experiencia Académica</a></li>
+      <li><a href="#personal"><i class="fas fa-briefcase"></i> Experiencia Personal</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section id="inicio" tabindex="0" aria-label="Sección inicio">
+    <h1>Hola, Kevin Castillo
+    <p>Desarrollador web apasionado por crear soluciones elegantes y eficientes. Bienvenido a mi portafolio personal donde comparto mis proyectos y experiencias.</p>
+    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=180&q=80" alt="Retrato de Desarrollador" />
+  </section>
+
+  <section id="proyectos" aria-label="Proyectos destacados">
+    <h2 class="section-title"><i class="fas fa-code"></i> Proyectos</h2>
+    <div class="projects-container">
+      <article class="project-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Captura proyecto 1" />
+        <div class="project-content">
+          <h3 class="project-title">Sitio Web Empresa XYZ</h3>
+          <p class="project-description">Desarrollé un sitio web corporativo responsivo utilizando React y Node.js para mejorar la presencia en línea del cliente.</p>
+          <div class="project-links">
+            <a href="#" aria-label="Ver repositorio del proyecto 1"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Ver demo en vivo del proyecto 1"><i class="fas fa-external-link-alt"></i> Demo</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Captura proyecto 2" />
+        <div class="project-content">
+          <h3 class="project-title">App Móvil Seguimiento Fitness</h3>
+          <p class="project-description">Creé una app multiplataforma con Flutter que permite a los usuarios registrar y analizar sus entrenamientos diarios.</p>
+          <div class="project-links">
+            <a href="#" aria-label="Ver repositorio del proyecto 2"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Ver demo en vivo del proyecto 2"><i class="fas fa-external-link-alt"></i> Demo</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1547658719-da2b5116910b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Captura proyecto 3" />
+        <div class="project-content">
+          <h3 class="project-title">Dashboard Analítico</h3>
+          <p class="project-description">Implementé un dashboard interactivo con gráficos dinámicos usando D3.js para visualizar patrones en datos empresariales.</p>
+          <div class="project-links">
+            <a href="#" aria-label="Ver repositorio del proyecto 3"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Ver demo en vivo del proyecto 3"><i class="fas fa-external-link-alt"></i> Demo</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="academica" aria-label="Experiencia académica">
+    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Experiencia Académica</h2>
+    <ul class="experience-list">
+      <li class="experience-item" tabindex="0">
+        <h3>Ingeniería en Sistemas</h3>
+        <span>Universidad Nacional - 2016 a 2021</span>
+        <p>Especialización en desarrollo de software, bases de datos y arquitecturas web.</p>
+      </li>
+      <li class="experience-item" tabindex="0">
+        <h3>Curso de Desarrollo Web Fullstack</h3>
+        <span>Platzi - 2022</span>
+        <p>Formación intensiva en tecnologías modernas como React, Node.js y MongoDB.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="personal" aria-label="Experiencia personal">
+    <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiencia Personal</h2>
+    <ul class="experience-list">
+      <li class="experience-item" tabindex="0">
+        <h3>Desarrollador Frontend Freelance</h3>
+        <span>2019 - Presente</span>
+        <p>Colaboración con startups para crear interfaces intuitivas y responsivas.</p>
+      </li>
+      <li class="experience-item" tabindex="0">
+        <h3>Prácticas profesionales</h3>
+        <span>Empresa Tech Solutions - 2020</span>
+        <p>Trabajé en el equipo de desarrollo backend para optimización de APIs REST.</p>
+      </li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>© 2024 [Tu Nombre] - Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>
+
