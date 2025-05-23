@@ -1,331 +1,304 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portafolio Personal - Desarrollador</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-<!-- Font Awesome for icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<style>
-  :root {
-    --green-dark: #1b3932;
-    --green: #2e7d32;
-    --green-light: #a5d6a7;
-    --green-lighter: #e8f5e9;
-    --text-dark: #263238;
-    --text-light: #fafafa;
-  }
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    color: var(--text-dark);
-    background-color: var(--green-lighter);
-    scroll-behavior: smooth;
-  }
-  header {
-    background-color: var(--green);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
-  }
-  nav {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.8rem 1rem;
-  }
-  .logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--green-lighter);
-    letter-spacing: 2px;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-  }
-  nav ul li a {
-    color: var(--green-lighter);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    position: relative;
-    padding: 0.25rem 0;
-  }
-  nav ul li a:hover,
-  nav ul li a:focus {
-    color: var(--green-light);
-  }
-  nav ul li a.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 3px;
-    background-color: var(--green-light);
-    border-radius: 4px;
-  }
-  main {
-    max-width: 1100px;
-    margin: 5.5rem auto 2rem;
-    padding: 0 1rem 4rem;
-  }
-  section {
-    margin-bottom: 4rem;
-  }
-  h2.section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--green-dark);
-    border-bottom: 3px solid var(--green);
-    padding-bottom: 0.25rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .section-title i {
-    color: var(--green);
-  }
-  /* Inicio Section */
-  #inicio {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: linear-gradient(135deg, var(--green-light), var(--green-lighter));
-    border-radius: 12px;
-  }
-  #inicio h1 {
-    font-size: 2.8rem;
-    color: var(--green-dark);
-    margin-bottom: 0.2rem;
-  }
-  #inicio p {
-    font-size: 1.2rem;
-    color: var(--green-dark);
-    max-width: 600px;
-    margin: 0.5rem auto 1.5rem;
-  }
-  #inicio img {
-    max-width: 180px;
-    border-radius: 50%;
-    border: 4px solid var(--green);
-    margin-top: 1rem;
-  }
-  /* Proyectos Section */
-  #proyectos .projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 1.8rem;
-  }
-  .project-card {
-    background-color: var(--green-lighter);
-    box-shadow: 0 2px 8px rgb(46 125 50 / 0.3);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
-  }
-  .project-card:hover {
-    transform: translateY(-6px);
-  }
-  .project-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-  }
-  .project-content {
-    padding: 1rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .project-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem 0;
-    color: var(--green-dark);
-  }
-  .project-description {
-    font-size: 0.95rem;
-    color: #414d3f;
-    flex-grow: 1;
-  }
-  .project-links {
-    margin-top: 0.7rem;
-  }
-  .project-links a {
-    text-decoration: none;
-    color: var(--green);
-    font-weight: 600;
-    margin-right: 1.2rem;
-    transition: color 0.3s ease;
-  }
-  .project-links a:hover {
-    color: var(--green-dark);
-  }
-  /* Experiencia Académica & Personal */
-  .experience-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .experience-item {
-    background-color: var(--green-lighter);
-    border-left: 6px solid var(--green);
-    margin-bottom: 1.5rem;
-    padding: 1rem 1rem 1rem 1.2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgb(46 125 50 / 0.25);
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .experience-item h3 {
-    margin: 0;
-    font-weight: 700;
-    color: var(--green-dark);
-  }
-  .experience-item span {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--green);
-  }
-  .experience-item p {
-    margin: 0.3rem 0 0 0;
-    font-size: 0.95rem;
-    color: #37473c;
-  }
-  /* Footer */
-  footer {
-    background-color: var(--green);
-    color: var(--green-lighter);
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-  /* Responsive tweaks */
-  @media (max-width: 600px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Portafolio - Kevin Castillo</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+   <link rel="icon" type="image/png" href="Imagenes/programador.png">
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    
+    html {
+       scroll-behavior: smooth;
+    }
+    :root {
+      --dark: #1c1c1c;
+      --light: #f5f5f5;
+      --gold: #c6a664;
+      --text: #333;
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background-color: var(--light);
+    }
+    header {
+      background: var(--dark);
+      color: var(--light);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+    }
     nav ul {
-      gap: 1rem;
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
     }
-    #inicio h1 {
-      font-size: 2.2rem;
+    nav ul li a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 600;
     }
-    #inicio p {
-      font-size: 1rem;
-      max-width: 90vw;
+    nav ul li a:hover {
+      color: var(--gold);
     }
-  }
-</style>
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--dark);
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .profile-img {
+      width: 160px;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      margin-top: 1rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .project-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .project-description {
+      font-size: 0.95rem;
+      color: #555;
+      flex-grow: 1;
+    }
+    .project-links {
+      margin-top: 0.7rem;
+    }
+    .project-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--gold);
+      margin-right: 1.2rem;
+    }
+    .project-links a:hover {
+      color: var(--dark);
+    }
+    .card {
+      background: white;
+      padding: 1rem;
+      border-left: 5px solid var(--gold);
+      box-shadow: 0 4px 8px var(--shadow);
+      margin-bottom: 1.5rem;
+    }
+    .card h3 {
+      margin-bottom: 0.3rem;
+      color: var(--dark);
+    }
+    footer {
+      text-align: center;
+      background: var(--dark);
+      color: var(--light);
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <nav aria-label="Menú principal">
-    <div class="logo" tabindex="0">Mi Portafolio</div>
-    <ul>
-      <li><a href="#inicio" class="active"><i class="fas fa-home"></i> Inicio</a></li>
-      <li><a href="#proyectos"><i class="fas fa-code"></i> Proyectos</a></li>
-      <li><a href="#academica"><i class="fas fa-graduation-cap"></i> Experiencia Académica</a></li>
-      <li><a href="#personal"><i class="fas fa-briefcase"></i> Experiencia Personal</a></li>
-    </ul>
-  </nav>
-</header>
-<main>
-  <section id="inicio" tabindex="0" aria-label="Sección inicio">
-    <h1>Hola, Kevin Castillo
-    <p>Desarrollador web apasionado por crear soluciones elegantes y eficientes. Bienvenido a mi portafolio personal donde comparto mis proyectos y experiencias.</p>
-    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=180&q=80" alt="Retrato de Desarrollador" />
-  </section>
+  <header>
+    <div class="logo">Kevin Castillo</div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#academica">Académica</a></li>
+        <li><a href="#personal">Personal</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <section id="proyectos" aria-label="Proyectos destacados">
-    <h2 class="section-title"><i class="fas fa-code"></i> Proyectos</h2>
-    <div class="projects-container">
-      <article class="project-card" tabindex="0">
-        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Captura proyecto 1" />
-        <div class="project-content">
-          <h3 class="project-title">Sitio Web Empresa XYZ</h3>
-          <p class="project-description">Desarrollé un sitio web corporativo responsivo utilizando React y Node.js para mejorar la presencia en línea del cliente.</p>
-          <div class="project-links">
-            <a href="#" aria-label="Ver repositorio del proyecto 1"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#" target="_blank" rel="noopener" aria-label="Ver demo en vivo del proyecto 1"><i class="fas fa-external-link-alt"></i> Demo</a>
-          </div>
-        </div>
-      </article>
-      <article class="project-card" tabindex="0">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Captura proyecto 2" />
-        <div class="project-content">
-          <h3 class="project-title">App Móvil Seguimiento Fitness</h3>
-          <p class="project-description">Creé una app multiplataforma con Flutter que permite a los usuarios registrar y analizar sus entrenamientos diarios.</p>
-          <div class="project-links">
-            <a href="#" aria-label="Ver repositorio del proyecto 2"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#" target="_blank" rel="noopener" aria-label="Ver demo en vivo del proyecto 2"><i class="fas fa-external-link-alt"></i> Demo</a>
-          </div>
-        </div>
-      </article>
-      <article class="project-card" tabindex="0">
-        <img src="https://images.unsplash.com/photo-1547658719-da2b5116910b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Captura proyecto 3" />
-        <div class="project-content">
-          <h3 class="project-title">Dashboard Analítico</h3>
-          <p class="project-description">Implementé un dashboard interactivo con gráficos dinámicos usando D3.js para visualizar patrones en datos empresariales.</p>
-          <div class="project-links">
-            <a href="#" aria-label="Ver repositorio del proyecto 3"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#" target="_blank" rel="noopener" aria-label="Ver demo en vivo del proyecto 3"><i class="fas fa-external-link-alt"></i> Demo</a>
-          </div>
-        </div>
-      </article>
+  <main>
+<section id="inicio">
+  <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+    <img src="Imagenes/WhatsApp Image 2025-01-29 at 9.41.05 PM.jpeg" 
+         alt="Kevin Castillo" 
+         style="width: 240px; height: 240px; border-radius: 50%; border: 5px solid var(--gold); object-fit: cover;" />
+    <div style="flex: 1; min-width: 250px;">
+      <h1 style="margin-bottom: 1rem; font-size: 2.2rem;">Hola, soy Kevin Castillo</h1>
+      <p style="font-size: 1.15rem; line-height: 1.6;">Estudiante de Ingeniería de Sistemas en la Universidad CESMAG. Tengo formación técnica en sistemas y redes, y conocimientos en desarrollo web con HTML y JavaScript. Me enfoco en crear soluciones funcionales y elegantes, con capacidad de trabajo en equipo y resolución de problemas.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="academica" aria-label="Experiencia académica">
-    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Experiencia Académica</h2>
-    <ul class="experience-list">
-      <li class="experience-item" tabindex="0">
-        <h3>Ingeniería en Sistemas</h3>
-        <span>Universidad Nacional - 2016 a 2021</span>
-        <p>Especialización en desarrollo de software, bases de datos y arquitecturas web.</p>
-      </li>
-      <li class="experience-item" tabindex="0">
-        <h3>Curso de Desarrollo Web Fullstack</h3>
-        <span>Platzi - 2022</span>
-        <p>Formación intensiva en tecnologías modernas como React, Node.js y MongoDB.</p>
-      </li>
-    </ul>
-  </section>
+</section>
 
-  <section id="personal" aria-label="Experiencia personal">
-    <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiencia Personal</h2>
-    <ul class="experience-list">
-      <li class="experience-item" tabindex="0">
-        <h3>Desarrollador Frontend Freelance</h3>
-        <span>2019 - Presente</span>
-        <p>Colaboración con startups para crear interfaces intuitivas y responsivas.</p>
-      </li>
-      <li class="experience-item" tabindex="0">
-        <h3>Prácticas profesionales</h3>
-        <span>Empresa Tech Solutions - 2020</span>
-        <p>Trabajé en el equipo de desarrollo backend para optimización de APIs REST.</p>
-      </li>
-    </ul>
-  </section>
-</main>
-<footer>
-  <p>© 2024 [Tu Nombre] - Todos los derechos reservados.</p>
-</footer>
+    <section id="proyectos">
+      <h2><i class="fas fa-code"></i> Proyectos</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sitio Web Empresa XYZ">
+          <div class="project-content">
+            <div class="project-title">Maquetado del Programa Hospital infantil</div>
+            <div class="project-description">En proceso de desarollo de un programa para administrar medicamentos y llevar un control exacto tanto de los medicos como los medicametos.</div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="https://www.figma.com/proto/ujv7zg75OrlXpEgJ6sdnhd/Sistema_Medicamentos?node-id=17-1361&p=f&t=OWRxmhOxZVwFBrB9-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=17%3A1361" target="_blank">Demo</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App Seguimiento Fitness">
+          <div class="project-content">
+            <div class="project-title">Maquetado de red social Hola!</div>
+            <div class="project-description">En proceso de desarrollo de una nueva red social donde podras visualizar, compartir y administrar tu informacion. </div>
+            <div class="project-links">
+              <a href="https://supabase.com/dashboard/project/gsfnttquqcuzdtxsvurl/database/schemas" target="_blank">Supabase</a>
+              <a href="https://www.figma.com/proto/X0DTfP1fU1rZ9P9vlErfPj/Untitled?node-id=11-371&starting-point-node-id=11%3A163" target="_blank">Demo</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://i.pinimg.com/736x/2e/5e/25/2e5e2568dae0900fd27cce61f85d723f.jpg" alt="Dashboard Analítico">
+          <div class="project-content">
+            <div class="project-title">Pagina Universitaria Cambridge</div>
+            <div class="project-description">sitio Web donde puedes registrarte crear tus proyectos de programacion y subirlos ademas de poder compartirlos con el resto de usuarios completado en un 60%.</div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+       <section id="academica">
+      <h2><i class="fas fa-graduation-cap"></i> Experiencia Académica</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-title">Ingeniería de Sistemas</div>
+            <div class="project-description">Universidad CESMAG – Actualmente cursando quinto semestre (inicio 2023).</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-title">Técnico en Sistemas y Redes</div>
+            <div class="project-description">Instituto Técnico Sistematizado de Nariño – Formación en redes y desarrollo web con HTML y JavaScript.</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-title">Bachiller Académico</div>
+            <div class="project-description">Institución Educativa Municipal José Antonio Galán.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="personal">
+      <h2><i class="fas fa-user"></i> Experiencia Personal</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-title">Proyectos Académicos</div>
+            <div class="project-description">Participación activa en trabajos de desarrollo de software y redes durante la formación académica.</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-title">Autoaprendizaje</div>
+            <div class="project-description">Estudio autodidacta de programación con Java, HTML, JavaScript, MATLAB y bases de datos.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2><i class="fas fa-envelope"></i> Contacto</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-title">Correo Electrónico</div>
+            <div class="project-description">kevinandrescastillomontilla@gmail.com</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-title">Teléfono / WhatsApp</div>
+            <div class="project-description">324 163 0347</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-content">
+            <div class="project-title">Ubicación</div>
+            <div class="project-description">Pasto, Nariño, Colombia</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Las secciones académica, personal y contacto permanecen sin cambios -->
+    <!-- Puedes pedirme que las actualice también al estilo de tarjetas si lo deseas -->
+  </main>
+
+  <footer>
+    <p>© 2024 Kevin Andrés Castillo Montilla - Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
-
